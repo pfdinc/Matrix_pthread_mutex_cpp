@@ -20,7 +20,6 @@ bool valid = false;
 int x;
 int y;
 
-
 using namespace std;
 void binFile(char * myFile);
 void calcMet(char * myFile);
@@ -35,24 +34,18 @@ int main(int argc , char **argv){
  char * fileName = argv[3];
 char * myFile ;
  if (fileName != NULL){
+	 myFile = fileName;
+	}else{
+ 	
+	 myFile = "defult.bin";}
 
-    myFile = fileName;
-
-
- }else{
-
- 	myFile = "defult.bin";
- }
-
-
-ofstream myFile2(myFile);
+	ofstream myFile2(myFile);
 
 myFile2.close();
 
 cout<<"Your N value =  "<< N<< ", your M value = " << M << " within your file" << myFile<<endl;
 	myM = new int*[M];
-
-
+	
 		for(int j = 0; j < M; j ++){
 			myM[j] = new int[M];
 			
@@ -61,10 +54,7 @@ cout<<"Your N value =  "<< N<< ", your M value = " << M << " within your file" <
 	pthread_t threads[M]; 
 	for (int i=0; i<M; i++) { 
 
-
-
 		if (error = pthread_create(&threads[i],0, metrix, (void *)&i)){
-			
 			cout<<"error"<<endl;
 			exit(1); 
 		}
@@ -77,69 +67,49 @@ pthread_join(threads[i], 0);
 }
 
 for(int j = 0 ; j < M ; j++){
-
-
 	for(int k = 0; k < M ; k++){
-myM[j][k] = rand() % 2 ;
-		cout<<myM[j][k]<<" ";
+	myM[j][k] = rand() % 2 ;
+	cout<<myM[j][k]<<" ";
 	
 	}
 	cout<<"\n"<<endl;
 }
 
 for (int i=0; i<M; i++){
- 
-
 pthread_join(threads[i], 0);
 }
 cout<<"Tour Transposed Matrix is "<<endl;
-
 int counter ;
 srand(time(NULL));
 for(int j = 0 ; j < M ; j++){
-
-
 	for(int k = 0; k < M ; k++){
-
-myM[j][k] = rand() % 2 ;
-		cout<<myM[j][k]<<" ";
+	myM[j][k] = rand() % 2 ;
+	cout<<myM[j][k]<<" ";
 	
 
 	}
 	cout<<"\n"<<endl;
 }
 
-
-
-
-
-
 binFile(myFile);
 //printBin(myFile);
-
 //=alcMet(myFile);
-
 pthread_exit(NULL);
 
-
-
-return 0; 
-
-
+	return 0; 
 }
 
 void *metrix(void *arg){
-
 	srand(time(NULL));
-mutex mut;
-int ret;
+	mutex mut;
+	int ret;
 
 //ret = pthread_mutex_lock(&mp);
 
-mut.lock();
-for(int i = 0 ; i < M ; i++)
-myM[counter][i] = rand() % 2 ;
-counter++;
+	mut.lock();
+	for(int i = 0 ; i < M ; i++)
+		myM[counter][i] = rand() % 2 ;
+		counter++;
 //ret = pthread_mutex_unlock(&mp);
 mut.unlock();
 }
@@ -215,26 +185,18 @@ int ones = 0;
 row=N/M;
 col=N%M;
 for(int i = row ; i < M ; i++){
-	for(int j = col ; j < M ; j++){
-	
-	
-
+	for(int j = col ; j < M ; j++){	
 	}
-
-
 }
 oneOrZero();
-
 while(valid ==false){
 
 for(int i = 0 ; i < M ; i++){
 	for(int j = 0 ; j < M ; j++){
 
-
 	}
 
 }
-
 	oneOrZero();
 }
 
