@@ -172,6 +172,7 @@ void calcMet(char * myFile) {
     int ones = 0;
     row=N/M;
     col=N%M;
+    /*
     for(int i = row ; i < M ; i++) {
         for(int j = col ; j < M ; j++) {
         }
@@ -184,7 +185,7 @@ void calcMet(char * myFile) {
 
             }
 
-        }
+        }*/
         oneOrZero();
     }
 
